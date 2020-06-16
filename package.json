@@ -4,14 +4,17 @@
   "description": "",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html -- public-url '.'",
     "predeploy": "rm -rf dist && parcel build index.html --public-url '.'",
     "deploy": "gh-pages -d dist"
   },
   "license": "MIT",
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "babel-preset-nano-react-app": "^0.1.0",
