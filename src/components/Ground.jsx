@@ -12,9 +12,6 @@ const Ground = () => {
     strokeWidth: "4px"
   };
 
-  console.log(Constants.skyAndGroundWidth)
-
-
   return (
     <g id="ground">
       <rect

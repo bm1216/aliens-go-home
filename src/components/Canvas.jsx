@@ -1,24 +1,51 @@
 import React from 'react';
 import Sky from './Sky';
 import Ground from './Ground'
+import CannonBase from './CannonBase';
+import CannonPipe from './CannonPipe';
+import PropTypes from 'prop-types'
+import CannonBall from './CannonBall';
+import CurrentScore from './CurrentScore';
+import UFO from './UFO';
+import Heart from './Heart';
+import StartGame from './StartGame'
+import Title from './Title'
 
-const Canvas = () => {
-  const viewBox = [-window.innerWidth/2, 100-window.innerHeight, window.innerWidth, window.innerHeight];
+const Canvas = (props) => {
+  const gameHeight = 1200;
+  const viewBox = [-window.innerWidth/2, 100-gameHeight, window.innerWidth, gameHeight];
   // const viewBox = [0, 0, 50, 50]
-  const style = {
-    border: '1px solid black',
-  };
+
   return (
     <svg
       id="aliens-go-home"
       preserveAspectRatio="xMaxYMax none"
+      onMouseMove={props.trackMouse}
       viewBox={viewBox}
     >
+      <defs>
+        <filter id="shadow">
+          <feDropShadow dx="1" dy="1" stdDeviation="2"/>
+        </filter>
+      </defs>
       <Sky />
       <Ground />
-      <circle cx={0} cy={0} r={50}/>
+      <CannonPipe rotation={props.angle}/>
+      <CannonBase/>
+      <CannonBall position={{x: 0, y:-100}}/>
+      <CurrentScore score={1000}/>
+      <UFO position={{x: -150, y: -300}}/>
+      <UFO position={{x: 150, y: -300}}/>
+      <Heart position={{x: -300, y:35}}/>
+      <StartGame onClick={() => console.log('Aliens, Go Home!')} />
+      <Title/>
     </svg>
   );
 };
+
+Canvas.propTypes = {
+  angle: PropTypes.number.isRequired,
+  trackMouse: PropTypes.func.isRequired
+}
 
 export default Canvas;
