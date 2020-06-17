@@ -1,4 +1,4 @@
-import { MOVE_OBJECTS, startGame } from '../actions';
+import { MOVE_OBJECTS, START_GAME } from '../actions';
 import moveObjects from './moveObjects';
 import startGame from './startGame';
 
