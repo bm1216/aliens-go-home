@@ -10,6 +10,9 @@ import UFO from './UFO';
 import Heart from './Heart';
 import StartGame from './StartGame'
 import Title from './Title'
+import Leaderboard from './Leaderboard'
+import {signIn} from 'auth0-web'
+import {leaderboard} from '../utils/constants'
 
 const Canvas = (props) => {
   const gameHeight = 1200;
@@ -39,6 +42,7 @@ const Canvas = (props) => {
         <g>
           <StartGame onClick={() => props.startGame()} />
           <Title/>
+          <Leaderboard currentPlayer={leaderboard[6]} authenticate={signIn} leaderboard={leaderboard} />
         </g>
       }
 
