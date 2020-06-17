@@ -1,0 +1,1 @@
+{"mappings":"AAAA,+DAA+D,CAE/D,UACE,eAAgB,CAChB,WACF","sources":["./src/index.css"],"names":[],"version":3,"file":"aliens-go-home-tiny.d84f6d84.css.map","sourcesContent":["@import url('https://fonts.googleapis.com/css?family=Joti+One');\n\nhtml, body {\n  overflow: hidden;\n  height: 100%\n}"]}
