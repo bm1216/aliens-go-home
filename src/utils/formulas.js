@@ -11,6 +11,8 @@ export const pathFromBezierCurve = (cubicBezierCurve) => {
 }
 
 export const radiansToDegrees = radians => ((radians * 180) / Math.PI);
+const degreesToRadian = degrees => ((degrees * Math.PI) / 180);
+
 
 // https://math.stackexchange.com/questions/714378/find-the-angle-that-creating-with-y-axis-in-degrees
 export const calculateAngle = (x1, y1, x2, y2) => {
@@ -38,3 +40,18 @@ export const getCanvasPosition = (event) => {
   const { x, y } = point.matrixTransform(svg.getScreenCTM().inverse());
   return {x, y};
 };
+
+export const calculateNextPosition = (x, y, angle, divisor = 300) => {
+  const realAngle = (angle * -1) + 90;
+  const stepsX = radiansToDegrees(Math.cos(degreesToRadian(realAngle))) / divisor;
+  const stepsY = radiansToDegrees(Math.sin(degreesToRadian(realAngle))) / divisor;
+  return {
+    x: x + stepsX,
+    y: y - stepsY,
+  }
+};
+
+export const checkCollision = (rectA, rectB) => {
+  rectA.x1 < rectB.x2 && rectA.x2 > rectB.x1 &&
+  rectA.y1 < rectB.y2 && rectA.y2 > rectB.y1
+}
